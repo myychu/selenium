@@ -5,9 +5,13 @@
   "main": "main.js",
   "dependencies": {
     "buffer": "^5.6.0",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "promisify": "0.0.3",
     "selenium-webdriver": "^4.0.0-alpha.7",
     "sleep": "^6.3.0",
-    "string": "^3.3.3"
+    "string": "^3.3.3",
+    "util-promisify": "^2.1.0"
   },
   "devDependencies": {},
   "scripts": {
