@@ -4,10 +4,12 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
+    "axios": "^0.20.0",
     "buffer": "^5.6.0",
     "moment": "^2.29.1",
     "mysql": "^2.18.1",
     "promisify": "0.0.3",
+    "querystring": "^0.2.0",
     "selenium-webdriver": "^4.0.0-alpha.7",
     "sleep": "^6.3.0",
     "string": "^3.3.3",
