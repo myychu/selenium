@@ -1,10 +1,11 @@
 const {Builder, By, Key} = require('selenium-webdriver');
 const buf = require('buffer');
-const sleep = require('sleep');
 const mysql = require('mysql');
 const promisify = require('util-promisify');
 const axios = require('axios').default;
+const moment = require('moment');
 const querystring = require('querystring');
+const { setupMaster } = require('cluster');
 
 
 // Create the connection to database
@@ -130,8 +131,8 @@ conn.connect(function(err) {
 
     console.log("entries made by " + user)
     for(let i = 0; i < dataset.length; i++){
-      let initDate = parseDate(dataset[i].inicio);
-      let endDate = parseDate(dataset[i].fin);
+      let initDate = moment(dataset[i].inicio, "DD/MM/YYYY hh:mm:ss").toDate();
+      let endDate = moment(dataset[i].fin, "DD/MM/YYYY hh:mm:ss").toDate();
       let worked = dataset[i].trabajado;
       let stopped = dataset[i].parado;
       let total = dataset[i].total;
@@ -147,15 +148,3 @@ conn.connect(function(err) {
     await driver.quit();
   }
 })();
-
-function parseDate(entireDate){
-  if (entireDate != "-"){
-    date = entireDate.slice(0, entireDate.indexOf(' '));
-    date = date.split("/").reverse().join("/");
-    time = entireDate.slice(entireDate.indexOf(' '), entireDate.length);
-    entireDate = date + time;
-    return entireDate;
-  }else{
-    return null;
-  }
-}
