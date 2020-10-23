@@ -5,7 +5,6 @@ const promisify = require('util-promisify');
 const axios = require('axios').default;
 const moment = require('moment');
 const querystring = require('querystring');
-const { setupMaster } = require('cluster');
 
 
 // Create the connection to database
@@ -22,7 +21,7 @@ conn.connect(function(err) {
   console.log("Connected!");
 });
  
-(async function example() {
+(async function web() {
   let driver = await new Builder().forBrowser('chrome').build();
   try {
     let user = '';
